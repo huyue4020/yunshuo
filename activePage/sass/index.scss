@@ -1,0 +1,225 @@
+@charset "utf-8";
+$widthFull : 100%;
+$heightFull : 100%;
+%md-1{
+	width:$widthFull;
+	height:$heightFull;
+}
+@mixin clear{
+	margin:0;
+	padding:0;
+}
+*{
+	@include clear;
+	font-family:"微软雅黑";
+}
+@mixin flexBox{
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:-ms-flex;
+	display:-o-flex;
+	display:flex;
+}
+@mixin flexDir-row{
+	flex-direction:row;
+}
+@mixin flexDir-col{
+	flex-direction:column;
+}
+body{
+	@extend %md-1;
+	@include flexBox;
+	@include flexDir-col;
+}
+html{
+	@extend %md-1;
+	font-size: 31.25vw; //100px
+}
+
+$bg-color:rgba(18,174,135,0.5);
+@mixin txt-cen{
+	text-align:center;
+}
+@mixin fixed{
+	position:fixed;
+}
+.top{
+	width:$widthFull;
+	height:0.11rem;
+	background-color:$bg-color;
+	font-size:14px;
+	@include fixed;
+	top:0px;
+	z-index:1000;
+}
+header{
+	width:$widthFull;
+	height:0.44rem;
+	background-color:$bg-color;
+	font-size:0.2rem;
+	line-height:0.44rem;
+	color:#fff;
+	@include flexBox;
+	@include fixed;
+	top:0.11rem;
+	z-index:1000;
+	i{
+		width: 0.44rem;
+		@include txt-cen;
+	}
+	span{
+		width: 2.32rem;
+		@include txt-cen;
+	}
+}
+
+section{
+	@mixin border{
+		-webkit-border-radius:0.05rem;
+		border-radius:0.05rem;
+	}
+	$color1:#565656;
+	$color2:#bebebe;
+	$color3:#5cd02c;
+	width:$widthFull;
+	height:auto;
+	background-color:rgb(240,240,240);
+	@include flexBox;
+	@include flexDir-col;
+	position:relative;
+	.banner{
+		width: $widthFull;
+		position:absolute;
+		top: 0px;
+		img{
+			width: $widthFull;
+		}
+	}
+	.main-box{
+		position:absolute;
+		top: 1.8rem;
+		left: 0.1rem;
+		width: 2.8rem;
+		// height: 1000px;
+		background-color: #fff;
+		padding:0.1rem;
+		font-size: 0.18rem;
+		.main-top{
+			height: 1rem;
+			.active-title{
+				height: 0.6rem;
+				@include flexBox;
+				// justify-content: space-between;
+				div{
+					display: inline-block;
+				}
+				.logo-img{
+					width: 0.5rem;
+					height: 0.5rem;
+					background-color:#000;
+					@include border;
+				}
+				.txt{
+					margin-left:0.1rem;
+					width: 60%;
+					flex-grow: 1;
+					span{
+						font-size: 0.14rem;
+						color: $color1;
+						font-weight: bold;
+					}
+					p{
+						margin-top: 0.02rem;
+						font-size: 0.1rem;
+						color: $color2;
+					}
+				}
+				.price{
+					position:absolute;
+					right: 0px;
+					top:0.5rem;
+					height: 0.2rem;
+					width: 0.5rem;
+					font-size: 0.14rem;
+					text-align: center;
+					color: #fff;
+					background-color:#ffc074;
+					-webkit-border-radius:0.05rem;
+					border-bottom-left-radius: 0.5rem;
+					border-top-left-radius: 0.5rem;
+				}
+			}
+			.active-num{
+				height: 0.4rem;
+				font-size: 0.1rem;
+				@include flexBox;
+				justify-content: space-between;
+				div{
+					display: inline-block;
+				}
+				.time{
+					span:nth-child(1){
+						color: $color2;
+					}
+					span:nth-child(2){
+						color: $color3;
+					}
+				}
+				.num{
+					span:nth-child(1){
+						color: $color2;
+					}
+					span:nth-child(2){
+						color: $color3;
+					}
+				}
+			}
+		}
+		.main{
+			h2{
+				font-size: 0.14rem;
+				color: $color1;
+				margin-bottom:0.2rem;
+			}
+			p{
+				font-size: 0.1rem;
+				color:$color2;
+				text-indent: 2em;
+				line-height: 0.18rem;
+			}
+			img{
+				width: $widthFull;
+				margin-top: 0.06rem;
+			}
+		}
+	}
+}
+footer{
+	width:$widthFull;
+	height:0.44rem;
+	background-color:$bg-color;
+	position:fixed;
+	bottom:0px;
+	font-size:0.16rem;
+	color:#fff;
+	@include flexBox;
+	justify-content:space-between;
+	line-height:0.44rem;
+	div{
+		display: inline-block;
+		text-align:center;
+	}
+	.all-price{
+		width: 0.54rem;
+	}
+	.baoming{
+		width: 0.84rem;
+		height: 0.3rem;
+		margin-top: 0.08rem;
+		margin-right:0.15rem;
+		border-radius:5rem;
+		background-color:#ffc074;
+		text-align:center;
+		line-height: 0.3rem;
+	}
+}
